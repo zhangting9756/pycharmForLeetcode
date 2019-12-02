@@ -13,6 +13,7 @@ class Solution1(object):
         """
         maxProfit = 0
         if (prices):
+
             for i in range(len(prices) - 1):
                 if (prices[i + 1] > prices[i]):
                     maxProfit += prices[i + 1] - prices[i]
