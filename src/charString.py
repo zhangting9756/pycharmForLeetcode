@@ -8,17 +8,23 @@ class Solution(object):
         """
         :type s: str
         :rtype: bool
+        isalnum() 方法检测字符串是否由字母和数字组成
         """
-        s = s = re.sub("[^A-Za-z]","",s).lower()
+        i, j = 0, len(s) - 1
 
-        if s == s[::-1]:
-
-            return True
-        else:
-            return False
+        while i < j:
+            while i < j and not s[i].isalnum():
+                i += 1
+            while i < j and not s[j].isalnum():
+                j -= 1
+            if s[i].lower() != s[j].lower():
+                return False
+            i += 1
+            j -= 1
+        return True
 
 
 if __name__ == '__main__':
-    a: str = "race a car"
+    a: str = "0p"
     c = Solution()
     print(c.isPalindrome(a))
