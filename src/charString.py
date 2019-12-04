@@ -40,6 +40,7 @@ if __name__ == '__main__':
     c = Solution1()
     print(c.firstUniqChar(a))
     """
+
     lists = ['a', 'a', 'b', '5', '6', '7', '5']
     a = collections.Counter(lists)
     print(a)
