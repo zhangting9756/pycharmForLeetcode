@@ -96,6 +96,7 @@ class Solution5(object):
         :type strs: List[str]
         :rtype: str
         """
+        """
         # 判断是否为空
         if not strs:
             return ''
@@ -110,10 +111,13 @@ class Solution5(object):
             if c != s2[i]:
                 return s1[:i]
         return s1
+        """
+        import os
+        return os.path.commonprefix(strs)
 
 if __name__ == '__main__':
 
-    a = ["dog","racecar","car"]
+    a = ["dog","rdogcar","cardog"]
     b = "ll"
     c = Solution5()
     print(c.longestCommonPrefix(a))
