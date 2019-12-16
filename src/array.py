@@ -165,7 +165,7 @@ class Solution9:
             else:
                 dict[nums[i]] = i
 
-
+"""旋转图像"""
 class Solution10:
     def rotate(self, matrix):
         """
@@ -180,14 +180,37 @@ class Solution10:
         for i in range(length):
             matrix[i] = matrix[i][::-1]
 
-
+"""字符串翻转"""
 class Solution11:
     def reverseString(self, s):
         """
         Do not return anything, modify s in-place instead.
         """
         s.reverse()
-
+"""丑数"""
+class Solution12:
+    def GetUglyNumber_Solution(self, index):
+        # write code here
+        if index == 0:
+            return 0
+        # 1作为特殊数直接保存
+        baselist = [1]
+        min2 = min3 = min5 = 0
+        curnum = 1
+        while curnum < index:
+            minnum = min(baselist[min2] * 2, baselist[min3] * 3, baselist[min5] * 5)
+            baselist.append(minnum)
+            # 找到第一个乘以2的结果大于当前最大丑数M的数字，也就是T2
+            while baselist[min2] * 2 <= minnum:
+                min2 += 1
+            # 找到第一个乘以3的结果大于当前最大丑数M的数字，也就是T3
+            while baselist[min3] * 3 <= minnum:
+                min3 += 1
+            # 找到第一个乘以5的结果大于当前最大丑数M的数字，也就是T5
+            while baselist[min5] * 5 <= minnum:
+                min5 += 1
+            curnum += 1
+        return baselist[-1]
 
 if __name__ == '__main__':
     a = ["h", "e", "l", "l", "o"]
