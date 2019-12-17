@@ -95,7 +95,7 @@ class Solution6:
 
 class Solution7:
     def plusOne(self, digits):
-        """
+
         i=len(digits)-1
         carry=1
         while i>=0:
@@ -121,7 +121,7 @@ class Solution7:
         else:
             digits[i] = digits[i] + 1
         return digits
-
+        """
 
 """ 移动零 给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。"""
 
@@ -211,14 +211,27 @@ class Solution12:
                 min5 += 1
             curnum += 1
         return baselist[-1]
+"""合并两个有序数组
+给定两个有序整数数组 nums1 和 nums2，将 nums2 合并到 nums1 中，使得 num1 成为一个有序数组。"""
+class Solution13:
+    def merge(self, nums1, m, nums2, n) -> None:
+        """
+        Do not return anything, modify nums1 in-place instead.
+        """
+        if m > 0 and n == 0:
+            nums1 = nums1
+        for i,num in enumerate(nums2):
+            nums1[-(i+1)] = num
+        nums1 = nums1.sort()
 
 if __name__ == '__main__':
-    a = ["h", "e", "l", "l", "o"]
+    a = [1,2,3,0,0,0]
+    b=[2,5,6]
     print("hello1")
     # b = input()
     print("hello2")
-    c = Solution11()
-    c.reverseString(a)
+    c = Solution13()
+    c.merge(a,3,b,3)
     print(a)
 
 
