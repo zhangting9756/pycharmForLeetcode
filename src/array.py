@@ -223,6 +223,19 @@ class Solution13:
         for i,num in enumerate(nums2):
             nums1[-(i+1)] = num
         nums1 = nums1.sort()
+"""数组中的逆序对数"""
+class Solution14:
+    def InversePairs(self, data):
+        count = 0
+        copy = []
+        for i in data:
+            copy.append(i)
+        copy.sort()
+        for i in range(len(copy)):
+            count += data.index(copy[i])
+            data.remove(copy[i])
+        return count
+
 
 if __name__ == '__main__':
     a = [1,2,3,0,0,0]
@@ -230,8 +243,8 @@ if __name__ == '__main__':
     print("hello1")
     # b = input()
     print("hello2")
-    c = Solution13()
-    c.merge(a,3,b,3)
-    print(a)
+    c = Solution14()
+    c.InversePairs(a)
+    print(c.InversePairs(a))
 
 
