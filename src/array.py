@@ -3,8 +3,6 @@ import numpy as np
 import pandas as pd
 
 """买卖股票的最佳时机 II"""
-
-
 class Solution1(object):
     def maxProfit(self, prices):
         """
@@ -20,6 +18,22 @@ class Solution1(object):
             return maxProfit
         else:
             return 0
+    def maxProfit2(self,prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        maxProfit = 0
+        if(prices):
+            cur = prices[0]
+            for i in range(len(prices) - 1):
+                if(prices[i]<cur):
+                    cur = prices[i]
+                else:
+                    tmp = prices[i]-cur
+                    if(maxProfit<tmp):
+                        maxProfit=tmp
+            return maxProfit
 
 
 """从排序数组中删除重复项 """
@@ -238,13 +252,13 @@ class Solution14:
 
 
 if __name__ == '__main__':
-    a = [1,2,3,0,0,0]
+    a = [7,6,4,3,1]
     b=[2,5,6]
     print("hello1")
     # b = input()
     print("hello2")
-    c = Solution14()
-    c.InversePairs(a)
-    print(c.InversePairs(a))
+    c = Solution1()
+    #c.maxProfit2(a)
+    print(c.maxProfit2(a))
 
 
