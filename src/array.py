@@ -26,7 +26,7 @@ class Solution1(object):
         maxProfit = 0
         if(prices):
             cur = prices[0]
-            for i in range(len(prices) - 1):
+            for i in range(len(prices)):
                 if(prices[i]<cur):
                     cur = prices[i]
                 else:
@@ -249,16 +249,39 @@ class Solution14:
             count += data.index(copy[i])
             data.remove(copy[i])
         return count
+"""打家劫舍"""
+class Solution15:
+    def rob(self,nums):
+        house_num = len(nums)
+        if house_num < 1:
+            return 0
+        elif house_num < 2:
+            return nums[0]
+
+        # 三家以上情况
+
+        max_value = [0 for i in range(house_num)]
+        # 如果只有一家，那么最大值就是这一家里的钱
+        max_value[0] = nums[0]
+        # 如果有两家，那么最大值就是这两家中的最大者
+        max_value[1] = max(nums[0], nums[1])
+        # 如果有3三家，那么就会有两种情况：
+        # 第一种情况，偷第三家的 -> 那么最大值为第三家的钱+第一家的钱
+        # 第二种情况，不偷第三家的 -> 那么最大值为第二家的
+        for i in range(2, house_num):
+            option1 = nums[i] + max_value[i - 2]
+            option2 = max_value[i - 1]
+            max_value[i] = max(option1, option2)
+
+        return max_value[house_num - 1]
 
 
 if __name__ == '__main__':
-    a = [7,6,4,3,1]
+    a = [1,3,1,3,100]
     b=[2,5,6]
     print("hello1")
     # b = input()
     print("hello2")
-    c = Solution1()
-    #c.maxProfit2(a)
-    print(c.maxProfit2(a))
-
+    c = Solution15()
+    c.rob(a)
 
