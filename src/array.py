@@ -277,7 +277,7 @@ class Solution15:
 
 
 if __name__ == '__main__':
-    a = [1,3,1,3,100]
+    a = [2,1,1,2]
     b=[2,5,6]
     print("hello1")
     # b = input()
