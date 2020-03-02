@@ -114,11 +114,25 @@ class Solution5(object):
         """
         import os
         return os.path.commonprefix(strs)
+"""有效的括号"""
+class Solution6:
+    def isValid(self, s):
+        pre_dict = {')': '(', ']': '[', '}': '{'}
+        stack = []
+        for i in s:
+            if i in pre_dict.values():  # 表明i为左括号，入栈
+                stack.append(i)
+            # i为右括号，若此时栈空(not stack)或者与出栈的不匹配则
+            # 匹配出错 ，return False
+            elif not stack or pre_dict[i] != stack.pop():
+                return False
+        return not stack  # 若结束时栈空则return True,反之return False
+
 
 if __name__ == '__main__':
 
-    a = ["dog","rdogcar","cardog"]
+    a ="()[]{}"
     b = "ll"
-    c = Solution5()
-    print(c.longestCommonPrefix(a))
+    c = Solution6()
+    print(c.isValid(a))
 
