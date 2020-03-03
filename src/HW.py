@@ -83,6 +83,7 @@ def junlong():
     for i in Result:
         Result_string += str(i)
     print(Result_string)
+
 def zhangtingzidan(inputScore):
     input_length = len(input_score)
     input_sorted = sorted(enumerate(input_score), key=lambda x: x[1])
@@ -141,6 +142,7 @@ def caixiaomiandan(n,a):
     for k, v in dict1.items():
         count += list(v.values())[0]
     print(count)
+
 if __name__ == '__main__':
     input_score = [1,2,3]
     #input_score = list(map(int, input().split(",")))
