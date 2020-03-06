@@ -3,8 +3,6 @@ import numpy as np
 import pandas as pd
 
 """买卖股票的最佳时机 II"""
-
-
 class Solution1(object):
     def maxProfit(self, prices):
         """
@@ -20,6 +18,22 @@ class Solution1(object):
             return maxProfit
         else:
             return 0
+    def maxProfit2(self,prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        maxProfit = 0
+        if(prices):
+            cur = prices[0]
+            for i in range(len(prices)):
+                if(prices[i]<cur):
+                    cur = prices[i]
+                else:
+                    tmp = prices[i]-cur
+                    if(maxProfit<tmp):
+                        maxProfit=tmp
+            return maxProfit
 
 
 """从排序数组中删除重复项 """
@@ -95,7 +109,7 @@ class Solution6:
 
 class Solution7:
     def plusOne(self, digits):
-        """
+
         i=len(digits)-1
         carry=1
         while i>=0:
@@ -121,7 +135,7 @@ class Solution7:
         else:
             digits[i] = digits[i] + 1
         return digits
-
+        """
 
 """ 移动零 给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。"""
 
@@ -165,7 +179,7 @@ class Solution9:
             else:
                 dict[nums[i]] = i
 
-
+"""旋转图像"""
 class Solution10:
     def rotate(self, matrix):
         """
@@ -180,22 +194,94 @@ class Solution10:
         for i in range(length):
             matrix[i] = matrix[i][::-1]
 
-
+"""字符串翻转"""
 class Solution11:
     def reverseString(self, s):
         """
         Do not return anything, modify s in-place instead.
         """
         s.reverse()
+"""丑数"""
+class Solution12:
+    def GetUglyNumber_Solution(self, index):
+        # write code here
+        if index == 0:
+            return 0
+        # 1作为特殊数直接保存
+        baselist = [1]
+        min2 = min3 = min5 = 0
+        curnum = 1
+        while curnum < index:
+            minnum = min(baselist[min2] * 2, baselist[min3] * 3, baselist[min5] * 5)
+            baselist.append(minnum)
+            # 找到第一个乘以2的结果大于当前最大丑数M的数字，也就是T2
+            while baselist[min2] * 2 <= minnum:
+                min2 += 1
+            # 找到第一个乘以3的结果大于当前最大丑数M的数字，也就是T3
+            while baselist[min3] * 3 <= minnum:
+                min3 += 1
+            # 找到第一个乘以5的结果大于当前最大丑数M的数字，也就是T5
+            while baselist[min5] * 5 <= minnum:
+                min5 += 1
+            curnum += 1
+        return baselist[-1]
+"""合并两个有序数组
+给定两个有序整数数组 nums1 和 nums2，将 nums2 合并到 nums1 中，使得 num1 成为一个有序数组。"""
+class Solution13:
+    def merge(self, nums1, m, nums2, n) -> None:
+        """
+        Do not return anything, modify nums1 in-place instead.
+        """
+        if m > 0 and n == 0:
+            nums1 = nums1
+        for i,num in enumerate(nums2):
+            nums1[-(i+1)] = num
+        nums1 = nums1.sort()
+"""数组中的逆序对数"""
+class Solution14:
+    def InversePairs(self, data):
+        count = 0
+        copy = []
+        for i in data:
+            copy.append(i)
+        copy.sort()
+        for i in range(len(copy)):
+            count += data.index(copy[i])
+            data.remove(copy[i])
+        return count
+"""打家劫舍"""
+class Solution15:
+    def rob(self,nums):
+        house_num = len(nums)
+        if house_num < 1:
+            return 0
+        elif house_num < 2:
+            return nums[0]
+
+        # 三家以上情况
+
+        max_value = [0 for i in range(house_num)]
+        # 如果只有一家，那么最大值就是这一家里的钱
+        max_value[0] = nums[0]
+        # 如果有两家，那么最大值就是这两家中的最大者
+        max_value[1] = max(nums[0], nums[1])
+        # 如果有3三家，那么就会有两种情况：
+        # 第一种情况，偷第三家的 -> 那么最大值为第三家的钱+第一家的钱
+        # 第二种情况，不偷第三家的 -> 那么最大值为第二家的
+        for i in range(2, house_num):
+            option1 = nums[i] + max_value[i - 2]
+            option2 = max_value[i - 1]
+            max_value[i] = max(option1, option2)
+
+        return max_value[house_num - 1]
 
 
 if __name__ == '__main__':
-    a = ["h", "e", "l", "l", "o"]
+    a = [2,1,1,2]
+    b=[2,5,6]
     print("hello1")
     # b = input()
     print("hello2")
-    c = Solution11()
-    c.reverseString(a)
-    print(a)
-
+    c = Solution15()
+    c.rob(a)
 
