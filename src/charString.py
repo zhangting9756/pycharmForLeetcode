@@ -127,7 +127,43 @@ class Solution6:
             elif not stack or pre_dict[i] != stack.pop():
                 return False
         return not stack  # 若结束时栈空则return True,反之return False
+"""二叉树的层次遍历"""
+class Solution7:
+    def levelOrder(self,root):
+        levels = []
+        if not root:
+            return levels
 
+        def helper(node, level):
+            # start the current level
+            if len(levels) == level:
+                levels.append([])
+
+            # append the current node value
+            levels[level].append(node.val)
+
+            # process child nodes for the next level
+            if node.left:
+                helper(node.left, level + 1)
+            if node.right:
+                helper(node.right, level + 1)
+
+        helper(root, 0)
+        return levels
+
+"""将有序数组转换为二叉搜索树，用到二叉查找法"""
+class Solution8:
+    def _sortedArrayToBST(self, nums, start, end):
+        if start > end:
+            return None
+
+        mid = (end - start)//2 + start
+        midNode = TreeNode(nums[mid])
+        midNode.left = self._sortedArrayToBST(nums, start, mid - 1)
+        midNode.right = self._sortedArrayToBST(nums, mid + 1, end)
+        return midNode
+    def sortedArrayToBST(self, nums: List[int]) -> TreeNode:
+        return self._sortedArrayToBST(nums, 0, len(nums) - 1)
 
 if __name__ == '__main__':
 
