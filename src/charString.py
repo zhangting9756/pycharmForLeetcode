@@ -3,6 +3,14 @@ import numpy as np
 import re
 import collections
 import operator
+
+"""树节点定义"""
+class TreeNode:
+     def __init__(self, x):
+         self.val = x
+         self.left = None
+         self.right = None
+
 """验证回文字符串,给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。"""
 class Solution(object):
     def isPalindrome(self, s):
@@ -162,7 +170,7 @@ class Solution8:
         midNode.left = self._sortedArrayToBST(nums, start, mid - 1)
         midNode.right = self._sortedArrayToBST(nums, mid + 1, end)
         return midNode
-    def sortedArrayToBST(self, nums: List[int]) -> TreeNode:
+    def sortedArrayToBST(self, nums) -> TreeNode:
         return self._sortedArrayToBST(nums, 0, len(nums) - 1)
 
 if __name__ == '__main__':
