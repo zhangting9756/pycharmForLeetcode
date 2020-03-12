@@ -283,10 +283,10 @@ class Solution16:
 
         avg = int(ans / 3)
 
+        res = False
+        lans, rans = A[0], A[len(A)-1]
         i = 1
         j = len(A) - 2
-        res = False
-        lans, rans = A[0], A[j]
         while i < j:
             if lans != avg:
                 lans += A[i]
@@ -303,11 +303,11 @@ class Solution16:
         return res
 
 if __name__ == '__main__':
-    a = [2,1,1,2]
+    a = [3,3,6,5,-2,2,5,1,-9,4]
     b=[2,5,6]
     print("hello1")
     # b = input()
     print("hello2")
-    c = Solution15()
-    c.rob(a)
+    c = Solution16()
+    c.canThreePartsEqualSum(a)
 
