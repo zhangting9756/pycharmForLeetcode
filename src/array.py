@@ -275,6 +275,32 @@ class Solution15:
 
         return max_value[house_num - 1]
 
+class Solution16:
+    def canThreePartsEqualSum(self, A):
+        ans = sum(A)
+        if ans % 3 != 0:
+            return False
+
+        avg = int(ans / 3)
+
+        i = 1
+        j = len(A) - 2
+        res = False
+        lans, rans = A[0], A[j]
+        while i < j:
+            if lans != avg:
+                lans += A[i]
+                i += 1
+
+            if rans != avg:
+                rans += A[j]
+                j -= 1
+
+            if lans == avg and rans == avg and j>=i:
+                res = True
+                break
+
+        return res
 
 if __name__ == '__main__':
     a = [2,1,1,2]

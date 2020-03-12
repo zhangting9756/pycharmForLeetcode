@@ -34,7 +34,7 @@ class Solution(object):
 """字符串中的第一个唯一字符
 给定一个字符串，找到它的第一个不重复的字符，并返回它的索引。如果不存在，则返回 -1。"""
 class Solution1:
-    def firstUniqChar(self, s: str) -> int:
+    def firstUniqChar(self, s):
         if(len(s)==0):
             return -1
         dic = collections.Counter(s)
@@ -174,9 +174,12 @@ class Solution8:
         return self._sortedArrayToBST(nums, 0, len(nums) - 1)
 
 if __name__ == '__main__':
+    """
+    a: str = "loveleetcode"
+    c = Solution1()
+    print(c.firstUniqChar(a))
+    """
 
-    a ="()[]{}"
-    b = "ll"
-    c = Solution6()
-    print(c.isValid(a))
-
+    lists = ['a', 'a', 'b', '5', '6', '7', '5']
+    a = collections.Counter(lists)
+    print(a)
