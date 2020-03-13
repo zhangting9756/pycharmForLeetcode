@@ -299,8 +299,35 @@ class Solution16:
             if lans == avg and rans == avg and j>=i:
                 res = True
                 break
-
         return res
+class Solution17:
+    def majorityElement(self, nums):
+        length = len(nums)
+        count, majority = 1, nums[0]
+        for num in nums[1:]:
+            if count == 0:
+                majority = num
+            if num == majority:
+                count += 1
+            else:
+                count -= 1
+        return majority
+
+    def majorityElement3(self, nums):
+        n = len(nums)
+        index = n // 3
+        dict = {}
+        for num in nums:
+            if num in dict:
+                dict[num] += 1
+            else:
+                dict[num] = 1
+        res = []
+        for i in dict:
+            if dict[i] > index:
+                res.append(i)
+        return res
+
 
 if __name__ == '__main__':
     a = [3,3,6,5,-2,2,5,1,-9,4]
@@ -308,6 +335,6 @@ if __name__ == '__main__':
     print("hello1")
     # b = input()
     print("hello2")
-    c = Solution16()
-    c.canThreePartsEqualSum(a)
+    c = Solution17()
+    c.majorityElement(a)
 
