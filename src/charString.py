@@ -189,7 +189,7 @@ class Solution9:
             return candidate
         """
         return candidate
-
+"""字符压缩"""
 class Solution10:
     def compressString(self, S: str) -> str:
         if len(S)<=2:
