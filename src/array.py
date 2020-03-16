@@ -327,14 +327,25 @@ class Solution17:
             if dict[i] > index:
                 res.append(i)
         return res
-
+"""最长上升子序列
+给定一个无序的整数数组，找到其中最长上升子序列的长度"""
+class Solution18:
+    def lengthOfLIS(self, nums) -> int:
+        if not nums: return 0
+        dp = [1] * len(nums)
+        for i in range(len(nums)):
+            for j in range(i):
+                if nums[j] < nums[i]:  # 如果要求非严格递增，将此行 '<' 改为 '<=' 即可。
+                    dp[i] = max(dp[i], dp[j] + 1)
+        return max(dp)
 
 if __name__ == '__main__':
-    a = [3,3,6,5,-2,2,5,1,-9,4]
+    a = [10,9,2,5,3,7,101,18]
     b=[2,5,6]
     print("hello1")
     # b = input()
     print("hello2")
-    c = Solution17()
-    c.majorityElement(a)
+    c = Solution18()
+    m=c.lengthOfLIS(a)
+    print(m)
 

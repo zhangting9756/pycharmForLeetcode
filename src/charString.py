@@ -179,12 +179,17 @@ class Solution8:
 class Solution9:
     def gcdOfStrings(self, str1: str, str2: str) -> str:
         if not str1 or not str2:
-            return ""
+            return ''
+        if str1+str2 != str2+str1:
+            return ''
         candidate_len = math.gcd(len(str1), len(str2))
         candidate = str1[: candidate_len]
+        """
         if candidate * (len(str1) // candidate_len) == str1 and candidate * (len(str2) // candidate_len) == str2:
             return candidate
-        return ''
+        """
+
+        return candidate
 
 
 if __name__ == '__main__':
