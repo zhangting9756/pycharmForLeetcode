@@ -188,8 +188,31 @@ class Solution9:
         if candidate * (len(str1) // candidate_len) == str1 and candidate * (len(str2) // candidate_len) == str2:
             return candidate
         """
-
         return candidate
+
+class Solution10:
+    def compressString(self, S: str) -> str:
+        if len(S)<=2:
+            return ''
+        count = 0
+        res = ''
+        char = S[0]
+        for i in range(len(S)):
+            if S[i]!=char:
+                res+=char
+                res+=str(count)
+                count =1
+                char = S[i]
+            else:
+                count+=1
+        res+=char
+        res+=str(count)
+        if len(S)>len(res):
+            return res
+        else:
+            return S
+
+
 
 
 if __name__ == '__main__':
@@ -199,8 +222,8 @@ if __name__ == '__main__':
     print(c.firstUniqChar(a))
     """
 
-    str1 = "ABCABC"
+    str1 = "aabcccccaaa"
     str2 = "ABC"
-    a = Solution9()
-    b = a.gcdOfStrings(str1,str2)
+    a = Solution10()
+    b = a.compressString(str1)
     print(b)
