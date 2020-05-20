@@ -212,7 +212,30 @@ class Solution10:
         else:
             return S
 
-
+class Solution11:
+    def longestPalindrome(self, s: str) -> int:
+        if len(s)==0:
+            return 0
+        #st1 = list(s)
+        dic={}
+        odd=[]
+        even=[]
+        length = 0
+        for i in s:
+            if i in dic:
+                dic[i]+=1
+            else:
+                dic[i]=1
+        for value in dic:
+            if dic[value]%2==0:
+                even.append(dic[value])
+            else:
+                odd.append(dic[value])
+        if len(odd)==0:
+            length = sum(even)
+        else:
+            length = sum(even)+max(odd)
+        return length
 
 
 if __name__ == '__main__':
@@ -222,8 +245,8 @@ if __name__ == '__main__':
     print(c.firstUniqChar(a))
     """
 
-    str1 = "aabcccccaaa"
+    str1 = "bb"
     str2 = "ABC"
-    a = Solution10()
-    b = a.compressString(str1)
+    a = Solution11()
+    b = a.longestPalindrome(str1)
     print(b)
